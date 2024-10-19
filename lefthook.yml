@@ -8,10 +8,10 @@ pre-commit:
       run: bun run lint:fix {staged_files}
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true * && git update-index --again
+      run: bun run check:fix --no-errors-on-unmatched --files-ignore-unknown=true * && git update-index --again
 
 pre-push:
   commands:
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npx biome check --no-errors-on-unmatched --files-ignore-unknown=true *
+      run: bun run check --no-errors-on-unmatched --files-ignore-unknown=true *
